@@ -40,18 +40,18 @@ export default function ClinicIntro() {
                 </div>
 
                 {/* 진료 항목 그리드 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((item, idx) => (
                         <div
                             key={idx}
                             data-aos="fade-up"
                             data-aos-duration={item.duration}
-                            className="group p-10 bg-slate-50 rounded-3xl border border-slate-100 hover:bg-blue-600 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                            className="group p-3 md:p-10 bg-slate-50 rounded-2xl md:rounded-3xl border border-slate-100 hover:bg-blue-600 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
                         >
-                            <div className="text-blue-600 group-hover:text-white mb-6 transition-colors duration-500">
+                            <div className="text-blue-600 group-hover:text-white mb-6 transition-colors duration-500 flex justify-center">
                                 {item.icon}
                             </div>
-                            <div className="text-2xl font-bold text-blue-600 group-hover:text-white mb-4 transition-colors duration-500">
+                            <div className="text-2xl font-bold text-blue-600 group-hover:text-white mb-4 transition-colors duration-500 flex justify-center">
                                 {item.title}
                             </div>
                             <p className="text-slate-600 group-hover:text-blue-50 leading-relaxed break-keep transition-colors duration-500">
