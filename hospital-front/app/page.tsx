@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import MainBanner from '@/components/MainBanner';
+import MainPopup from '@/components/Popup';
 import { useHospital } from '@/context/HospitalContext';
 
 
@@ -29,6 +30,8 @@ export default function Home() {
 
   return (
     <div className="relative">
+      <MainPopup/>
+
       {/* 1. 최상단 Fixed Header */}
       <Header />
 

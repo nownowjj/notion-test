@@ -34,19 +34,19 @@ export async function GET() {
 
     const data = results.map((page: any) => {
       const props = page.properties;
-      console.log(JSON.stringify(props))
-      
       const imageFiles = props['이미지']?.files || [];
       const imageUrls = imageFiles.map((file: any) => {
         return file.type === 'file' ? file.file.url : file.external?.url;
       });
-
+      
       return {
         id: page.id,
         name: props['이름']?.title?.[0]?.plain_text || '이름 없음',
         description: props['설명']?.rich_text?.[0]?.plain_text || '',
         imageUrl: imageUrls,
-        index: page.properties['index'].rich_text[0]?.plain_text || "0"
+        index: page.properties['index'].rich_text[0]?.plain_text || "0",
+        text: page.properties["text"]?.rich_text[0]?.plain_text || "",
+        useYn:page.properties["use"]?.checkbox || false
       };
     });
 

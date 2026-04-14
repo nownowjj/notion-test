@@ -9,6 +9,8 @@ export interface HospitalItem {
   description: string;
   index: number;      // API Route에서 이미 Number() 처리를 했으므로 number 타입 유지
   imageUrl: string[];   // 단일 imageUrl 대신 문자열 배열(URL 리스트)로 변경
+  text:string;
+  useYn:boolean;
 }
 
 export function useHospitalData() {
@@ -25,7 +27,6 @@ export function useHospitalData() {
         setIsLoading(true);
         // 우리가 만든 API Route 호출
         const response = await fetch('/api/hospital');
-        
         if (!response.ok) {
           throw new Error('데이터를 불러오는데 실패했습니다.');
         }
@@ -48,6 +49,13 @@ export function useHospitalData() {
   // 편리하게 꺼내 쓰기 위한 헬퍼 함수들
   const getByIndex = (index: number) => data.find(item => Number(item.index) === Number(index));
   const getByRange = (start: number, end: number) => data.filter(item => item.index >= start && item.index <= end);
+  const getPopups = () => {
+      return data.filter(item => 
+      item.index >= 90 && 
+      item.index <= 100 && 
+      item.useYn === true
+    );
+  };
 
-  return { data, isLoading, error, getByIndex, getByRange };
+  return { data, isLoading, error, getByIndex, getByRange ,getPopups };
 }
