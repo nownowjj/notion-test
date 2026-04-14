@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useHospital } from '@/context/HospitalContext'; // 경로에 맞게 수정
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { HospitalItem } from '@/hooks/useHospitalData';
 
 export default function MainPopup() {
     const [mounted, setMounted] = useState(false);
@@ -21,9 +22,9 @@ export default function MainPopup() {
             setClosedPopups(JSON.parse(hiddenIds));
         }
     }, []);
-
-    // 1. 노출 가능한 팝업 필터링 (로컬스토리지에 저장된 ID 제외)
-    const visiblePopups = allPopups.filter(popup => !closedPopups.includes(popup.id));
+    
+    // 2. filter 내부의 popup 변수에 타입을 지정합니다.
+    const visiblePopups = allPopups.filter((popup: HospitalItem) => !closedPopups.includes(popup.id));
 
     // 현재 보여줄 데이터
     const currentPopup = visiblePopups[currentIndex];
